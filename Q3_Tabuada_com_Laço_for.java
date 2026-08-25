@@ -4,7 +4,7 @@
 
 import java.util.Scanner;
 
-public class Tabuada_com_Laço_for {
+public class Q3_Tabuada_com_Laço_for {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 

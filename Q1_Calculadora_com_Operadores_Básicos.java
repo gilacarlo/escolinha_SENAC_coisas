@@ -5,7 +5,7 @@
 
 import java.util.Scanner;
 
-public class Calculadora_com_Operadores_Básicos {
+public class Q1_Calculadora_com_Operadores_Básicos {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 

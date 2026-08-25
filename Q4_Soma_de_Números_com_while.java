@@ -5,7 +5,7 @@
 
 import java.util.Scanner;
 
-public class Soma_de_Números_com_while {
+public class Q4_Soma_de_Números_com_while {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 

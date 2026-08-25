@@ -7,7 +7,7 @@
 
 import java.util.Scanner;
 
-public class Menu_com_switch {
+public class Q5_Menu_com_switch {
     public static float areaQuadrado(float tamanho){
         return (tamanho * tamanho);
     }
