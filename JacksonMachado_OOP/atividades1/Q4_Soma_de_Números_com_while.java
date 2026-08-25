@@ -1,3 +1,4 @@
+package JacksonMachado_OOP.atividades1;
 // Desenvolva um programa que leia números inteiros do usuário 
 // em um laço while até que ele digite 0 (zero). Ao final, 
 // exiba a soma de todos os números digitados. 

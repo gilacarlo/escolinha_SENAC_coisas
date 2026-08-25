@@ -1,3 +1,4 @@
+package JacksonMachado_OOP.atividades1;
 // Implemente um programa que leia um número inteiro do usuário e 
 // exiba a tabuada desse número (de 1 a 10) utilizando um laço for. 
 // Valide a entrada com try/catch e utilize operadores de multiplicação.

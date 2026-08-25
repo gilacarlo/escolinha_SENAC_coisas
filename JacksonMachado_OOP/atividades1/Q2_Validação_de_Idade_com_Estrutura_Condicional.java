@@ -1,3 +1,4 @@
+package JacksonMachado_OOP.atividades1;
 // Crie um programa que solicite a idade do usuário e determine se é maior 
 // de idade (≥ 18 anos), menor de idade ou idoso (≥ 60 anos). Utilize 
 // estruturas if/else para implementar a lógica e trate erros de 

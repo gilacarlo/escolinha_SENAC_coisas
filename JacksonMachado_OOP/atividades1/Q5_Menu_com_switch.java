@@ -1,3 +1,4 @@
+package JacksonMachado_OOP.atividades1;
 // Crie um programa de menu que oferece as seguintes opções: 
 // (1) Calcular área de um quadrado, 
 // (2) Calcular área de um círculo, 
