@@ -3,12 +3,12 @@
 // exiba a soma de todos os números digitados. 
 // Utilize try/catch para tratar entradas inválidas.
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Soma_de_Números_com_while {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
-
 
         int numero = -9;
         int resultado = 0;
@@ -17,7 +17,7 @@ public class Soma_de_Números_com_while {
             try{
                 numero = scanner.nextInt();
                 resultado += numero;
-            }catch(ArithmeticException e){
+            }catch(InputMismatchException  e){
                 System.out.print("digite um numero meu deus:");
                 scanner.next();
             }
