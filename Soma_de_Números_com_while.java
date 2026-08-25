@@ -17,7 +17,7 @@ public class Soma_de_Números_com_while {
             try{
                 numero = scanner.nextInt();
                 resultado += numero;
-            }catch(InputMismatchException  e){
+            }catch(Exception  e){
                 System.out.print("digite um numero meu deus:");
                 scanner.next();
             }
