@@ -9,8 +9,16 @@ public class Tabuada_com_Laço_for {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("digite um numero inteiro:");
-        int numero = scanner.nextInt();
-    
+        int numero = 0;
+        try{
+            numero = scanner.nextInt();
+            for(int i = 1; i <= 10; i++){
+                System.out.print("\n"+numero+" vezes "+i+" é: "+(numero*i));
+            }
+        }catch(ArithmeticException e){
+            System.out.print("burro demais");
+        }
+        
         scanner.close();
     }
 }
