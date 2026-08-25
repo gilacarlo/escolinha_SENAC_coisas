@@ -6,7 +6,7 @@
 import java.util.Scanner;
 
 public class Validação_de_Idade_com_Estrutura_Condicional {
-    public static void main(){
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("digite uma idade:");

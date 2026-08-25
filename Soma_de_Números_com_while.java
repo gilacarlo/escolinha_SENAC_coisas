@@ -1,12 +1,28 @@
+// Desenvolva um programa que leia números inteiros do usuário 
+// em um laço while até que ele digite 0 (zero). Ao final, 
+// exiba a soma de todos os números digitados. 
+// Utilize try/catch para tratar entradas inválidas.
+
 import java.util.Scanner;
 
 public class Soma_de_Números_com_while {
-    public static void main(){
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("digite um numero inteiro:");
-        int numero = scanner.nextInt();
-    
+
+        int numero = -9;
+        int resultado = 0;
+        while(numero != 0){
+            System.out.print("digite um numero inteiro:");
+            try{
+                numero = scanner.nextInt();
+                resultado += numero;
+            }catch(ArithmeticException e){
+                System.out.print("digite um numero meu deus:");
+                scanner.next();
+            }
+        }
+        System.out.print("somatorio: "+resultado);
         scanner.close();
     }
 }
