@@ -3,7 +3,6 @@
 // exiba a soma de todos os números digitados. 
 // Utilize try/catch para tratar entradas inválidas.
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Soma_de_Números_com_while {
