@@ -22,14 +22,38 @@ public class Menu_com_switch {
 
         System.out.print("digite um numero inteiro:");
         int opcao = scanner.nextInt();
-        
-        switch (opcao) {
-            case 1:
-                System.out.print("area quadrado: " + areaQuadrado(23.3f));
-                break;
-        
-            default:
-                break;
+        boolean sair = false;
+
+        while (sair == false) {
+            
+            float num = 0.0f;
+            try{
+                switch (opcao) {
+                case 1:
+                    System.out.print("digite o tamanho do quadrado");
+                    num = scanner.nextFloat();
+                    System.out.print("area quadrado: " + areaQuadrado(num));
+                    break;
+                case 2:
+                    System.out.print("digite o raio do circulo");
+                    num = scanner.nextFloat();
+                    System.out.print("area circulo: " + areaCirculo(num));
+                    break;  
+                case 3:
+                    System.out.print("digite o lado A do retangulo");
+                    num = scanner.nextFloat();
+                    System.out.print("digite o lado B do retangulo");
+                    float num2 = scanner.nextFloat();
+                    System.out.print("area circulo: " + perimetroRetangulo(num,num2));
+                    break;
+                case 4:
+                    sair = true;
+                default:
+                    break;
+                }
+            }catch(Exception e){
+                System.out.print("digite algo valido");
+            }
         }
         scanner.close();
     }
