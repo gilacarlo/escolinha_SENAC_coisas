@@ -19,15 +19,16 @@ public class Menu_com_switch {
     }
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("digite um numero inteiro:");
-        int opcao = scanner.nextInt();
         boolean sair = false;
 
         while (sair == false) {
-            
-            float num = 0.0f;
             try{
+            System.out.print("\n(1) Calcular área de um quadrado, \r\n" + 
+                            "(2) Calcular área de um círculo, \r\n" + 
+                            "(3) Calcular perímetro de um retângulo,  \r\n"+
+                            "(4) Sair. :");
+            int opcao = scanner.nextInt();
+            float num = 0.0f;
                 switch (opcao) {
                 case 1:
                     System.out.print("digite o tamanho do quadrado");
@@ -53,6 +54,7 @@ public class Menu_com_switch {
                 }
             }catch(Exception e){
                 System.out.print("digite algo valido");
+                scanner.next();
             }
         }
         scanner.close();
