@@ -9,12 +9,34 @@ import java.util.Scanner;
 // Valide se os números são positivos com if/else.
 
 public class Q9_Validação_de_Entrada_com_Múltiplos_trycatch {
-    public static void main(String[] args){
+    public static float varUsuario(Scanner scanner) {
+        float num;
+
+        while (true) {
+            try {
+                System.out.print("\nDigite um número: ");
+                num = scanner.nextFloat();
+                return num;
+
+            } catch (Exception e) {
+                System.out.println("Digite algo válido!");
+                scanner.next(); // Limpa a entrada inválida
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("digite um numero inteiro:");
-        int numero = scanner.nextInt();
-    
+        float num1 = varUsuario(scanner);
+        float num2 = varUsuario(scanner);
+        float num3 = varUsuario(scanner);
+
+        float resultado = (num1 + num2 + num3) / 3;
+
+        System.out.println("A média é: " + resultado);
+
         scanner.close();
     }
 }
