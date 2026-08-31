@@ -2,13 +2,11 @@ package JacksonMachado_OOP.atividades2;
 
 import java.util.Scanner;
 
-// Desenvolva um programa que solicite ao usuário a quantidade de alunos 
-// de uma turma e armazene as notas deles em um array de double. 
-// O programa deve calcular e exibir a média da turma, a maior nota, a 
-// menor nota e a quantidade de alunos aprovados, considerando média mínima igual a 6,0.
-// Utilize Scanner para a entrada, try/catch para tratar valores inválidos, 
-// conversão de tipos quando necessário e um laço for para percorrer o array. 
-// Use if/else para classificar os alunos como aprovados ou reprovados.
+// Desenvolva um programa que leia 15 números inteiros e armazene-os em um array. Depois, percorra 
+// o array e exiba separadamente os números pares e os números ímpares. Ao final, informe a 
+// quantidade de elementos de cada grupo.
+// Utilize o operador módulo (%) para identificar a paridade. O preenchimento do 
+// array deve ser feito com for, e o programa deve tratar entradas inválidas usando try/catch.
 
 public class Q3_SeparaçãodeNúmerosPareseÍmpares {
     public static void main(String[] args){
