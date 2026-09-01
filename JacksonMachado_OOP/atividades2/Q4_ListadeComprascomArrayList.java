@@ -29,7 +29,7 @@ public class Q4_ListadeComprascomArrayList {
             System.out.print("\n(2) remover produto pelo nome.");
             System.out.print("\n(3) listar produtos.");
             System.out.print("\n(4) consultar se um produto está na lista.");
-            System.out.print("\n(5) listar produtos.");
+            System.out.print("\n(5) sair.");
             int numero = 0;
             try{
                 numero = scanner.nextInt();
