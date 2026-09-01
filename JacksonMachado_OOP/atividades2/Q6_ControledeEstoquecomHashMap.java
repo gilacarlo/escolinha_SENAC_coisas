@@ -1,7 +1,6 @@
 package JacksonMachado_OOP.atividades2;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -97,5 +96,6 @@ public class Q6_ControledeEstoquecomHashMap {
                     break;
             }
         }
+        scanner.close();
     }
 }
