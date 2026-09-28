@@ -1,4 +1,4 @@
-package JacksonMachado_OOP.atividade3.Cadastro_de_Alunos;
+package JacksonMachado_OOP.atividades3.Cadastro_de_Alunos;
 
 public class Aluno {
     String nome;

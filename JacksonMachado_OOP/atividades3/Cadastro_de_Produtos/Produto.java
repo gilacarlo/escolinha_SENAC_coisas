@@ -1,4 +1,4 @@
-package JacksonMachado_OOP.atividade3.Cadastro_de_Produtos;
+package JacksonMachado_OOP.atividades3.Cadastro_de_Produtos;
 
 public class Produto {
     String nome;

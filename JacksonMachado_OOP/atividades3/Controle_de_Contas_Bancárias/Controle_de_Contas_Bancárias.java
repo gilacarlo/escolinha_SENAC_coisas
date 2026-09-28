@@ -1,4 +1,4 @@
-package JacksonMachado_OOP.atividade3.Controle_de_Contas_Bancárias;
+package JacksonMachado_OOP.atividades3.Controle_de_Contas_Bancárias;
 
 import java.util.ArrayList;
 import java.util.Scanner;

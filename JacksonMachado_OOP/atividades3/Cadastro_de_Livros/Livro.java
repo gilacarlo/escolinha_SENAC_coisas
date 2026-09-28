@@ -1,4 +1,4 @@
-package JacksonMachado_OOP.atividade3.Cadastro_de_Livros;
+package JacksonMachado_OOP.atividades3.Cadastro_de_Livros;
 
 public class Livro {
     String titulo;

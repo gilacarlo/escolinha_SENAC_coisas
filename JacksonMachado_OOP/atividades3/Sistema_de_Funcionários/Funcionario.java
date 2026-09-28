@@ -1,4 +1,4 @@
-package JacksonMachado_OOP.atividade3.Sistema_de_Funcionários;
+package JacksonMachado_OOP.atividades3.Sistema_de_Funcionários;
 
 public class Funcionario {
     String nome;
