@@ -31,6 +31,28 @@ public class Robo {
             this.energia -= danoReceber;
         }
     }
+    void recuperarEnergia(int energia){
+        if(energia % 10 != 0){
+            System.out.print("\nTem que ser multiplo de 10.");
+            return;
+        }
+        if(energia + this.energia > 100){
+            System.out.print("\nNao pode ser maior que 100.");
+            return;
+        }
+        if(energia < 10){
+            System.out.print("\nNao pode ser menor que 0.");
+            return;
+        }
+        int pontosQueVaiGastar = energia/10;
+        if(pontosQueVaiGastar <= this.pontos){
+            this.energia += energia;
+            this.pontos -= pontosQueVaiGastar;
+            System.out.print("\nEnergia total : " + this.energia);
+        }else{
+            System.out.print("\nNao tem pontos suficientes.");
+        }
+    }
     void ganhouDuleo(){
         this.pontos += 3;
         this.vitorias++;

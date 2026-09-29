@@ -33,6 +33,9 @@ public class Main {
         robos.add(new Robo(this.codigoMaximo, nome, ataque, defesa));
         this.codigoMaximo++;
     }
+    public void excluirRobo(int codRobo){
+
+    }
     public Robo encontrarRobo(int codigo){
         for(Robo robo : robos){
             if(robo.codigo == codigo){
@@ -116,11 +119,10 @@ public class Main {
 
         boolean sair = false;
         while(sair == false){
-            System.out.print("\nescolha uma das opcoes:");
+            System.out.print("\nEscolha uma das opcoes:");
             System.out.print("\n(1) Cadastrar robo.");
             System.out.print("\n(2) Consultar robo.");
             System.out.print("\n(3) Listar todos os robos.");
-
             System.out.print("\n(4) Realizar um combate.");
             System.out.print("\n(5) Recuperar energia de um robo.");
             System.out.print("\n(6) Executar uma rodada geral.");
@@ -165,6 +167,32 @@ public class Main {
                         }while(robo2 == null);
                     }while(robo1.codigo == robo2.codigo);
                     realizarCombate1v1(robo1, robo2, true);
+                    break;
+                case 5:
+                    Robo roboE;
+                    do{
+                        System.out.print("\nDigite o codigo do robo:");
+                        roboE = encontrarRobo(intInput(scanner));
+                    }while(roboE == null);
+                    int energiaRecuperar = intInput(scanner);
+                    roboE.recuperarEnergia(energiaRecuperar);
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+
+                    break;
+                case 9:
+                    Robo roboExcuir;
+                    do{
+                        System.out.print("\nDigite o codigo do robo:");
+                        roboExcuir = encontrarRobo(intInput(scanner));
+                    }while(roboExcuir == null);
+                    excluirRobo(roboExcuir.codigo);
                     break;
                 default:
                     break;
