@@ -9,6 +9,7 @@ public class Robo {
     int vitorias = 0;
     int derrotas = 0;
     int empates = 0;
+    int folgas = 0;
     float pontos = 0;
 
     Robo(int codigo, String nome, int ataque, int defesa){

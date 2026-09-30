@@ -33,9 +33,6 @@ public class Main {
         robos.add(new Robo(this.codigoMaximo, nome, ataque, defesa));
         this.codigoMaximo++;
     }
-    public void excluirRobo(int codRobo){
-
-    }
     public Robo encontrarRobo(int codigo){
         for(Robo robo : robos){
             if(robo.codigo == codigo){
@@ -112,10 +109,50 @@ public class Main {
             robo1.perdeuDuelo();
         }
     }
+    public Robo[] listaDeRobosEmSuasColocacoes(){
+        Robo[] classificacaoRobos = new Robo[robos.size()];
+        for(Robo robo : robos){
+            int indexQPodeColocar = 0;
+            for(Robo roboCla : classificacaoRobos){
+                if(roboCla == null){
+                    break;
+                }
+                boolean achou = false;
+                if(robo.pontos == roboCla.pontos){
+                    if(robo.vitorias == roboCla.vitorias){
+                        if(robo.energia == roboCla.energia){
+                            if(robo.codigo > roboCla.codigo){
+                                achou = true;
+                            }
+                        }else if(robo.energia < roboCla.energia){
+                            achou = true;
+                        }
+                    }else if(robo.vitorias < roboCla.vitorias){
+                        achou = true;
+                    }
+                }else if(robo.pontos < roboCla.pontos){
+                    achou = true;
+                }
+                if(achou == true){
+                    // shiftar todos os valores para direita
+                    for(int i = robos.size() - 2; i >= indexQPodeColocar; i--){
+                        classificacaoRobos[i + 1] = classificacaoRobos[i]; 
+                    }
+                    break;
+                }
+                indexQPodeColocar++;
+            }    
+            classificacaoRobos[indexQPodeColocar] = robo;
+        }
+        return classificacaoRobos;
+    }
     public void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         cadastrarRobo("Jorge", 30, 10);
         cadastrarRobo("Roberto", 20,15);
+        cadastrarRobo("Maria", 20,15);
+        cadastrarRobo("Deus", 30,20);
+
 
         boolean sair = false;
         while(sair == false){
@@ -143,6 +180,7 @@ public class Main {
                     cadastrarRobo(nome, ataque, defesa);
                     break;
                 case 2:
+                    if(robos.size() == 0) {System.out.print("\nAinda não existem robos."); break;}
                     System.out.print("\nDigite o codigo do robo:");
                     Robo roboConsultar = encontrarRobo(intInput(scanner));
                     if(roboConsultar != null){
@@ -150,11 +188,13 @@ public class Main {
                     }
                     break;
                 case 3:
+                    if(robos.size() == 0) {System.out.print("\nAinda não existem robos."); break;}
                     for(Robo robo : robos){
                         roboAtributosMostrar(robo);
                     }
                     break;
                 case 4:
+                    if(robos.size() < 2) {System.out.print("\nAinda não existem robos suficientes."); break;}
                     Robo robo1; Robo robo2;
                     do{
                         System.out.print("\nDigite o codigo do robo1:");
@@ -178,21 +218,60 @@ public class Main {
                     roboE.recuperarEnergia(energiaRecuperar);
                     break;
                 case 6:
-
+                    Robo[] robosParaDuelar = listaDeRobosEmSuasColocacoes();
+                    if(){
+                        
+                    }
                     break;
                 case 7:
-
+                    Robo[] robosColocacoes = listaDeRobosEmSuasColocacoes();
+                    int posicaoRoboPontos = 1;
+                    System.out.print("\nClassificação dos robos: ");
+                    for(int i = robos.size() - 1; i >= 0; i--){
+                        System.out.print("\n" + posicaoRoboPontos + " " + robosColocacoes[i].nome + "  pontos: " + robosColocacoes[i].pontos);
+                        posicaoRoboPontos++;
+                    }
                     break;
                 case 8:
-
+                    System.out.print("\nQuantidade de robos cadastrados: " + robos.size());
+                    float mediaDeEnergiaDeTodos = 0;
+                    for(Robo robo : robos){
+                        mediaDeEnergiaDeTodos += robo.energia;
+                    }
+                    mediaDeEnergiaDeTodos /= robos.size();
+                    System.out.print("\nMedia de energia dos robos: " + mediaDeEnergiaDeTodos);
+                    float maiorAproveitamento = 0;
+                    ArrayList<Robo> robosEmpatados = new ArrayList<>();
+                    for(Robo robo : robos){
+                        int partidasTotaisRobo = robo.vitorias + robo.derrotas + robo.empates;
+                        if(partidasTotaisRobo == 0) continue;
+                        float proveitamentoRobo = robo.vitorias / partidasTotaisRobo;
+                        if(proveitamentoRobo > maiorAproveitamento){
+                            maiorAproveitamento = proveitamentoRobo; 
+                            robosEmpatados.clear();
+                            robosEmpatados.add(robo);
+                        }else if(proveitamentoRobo == maiorAproveitamento){
+                            robosEmpatados.add(robo);
+                        }
+                        if(robo.energia < 30){
+                            System.out.print("\nRobo " + robo.nome + " esta em recuperação.");
+                        }
+                    }
+                    for(Robo robo : robosEmpatados){
+                        System.out.print("\nRobo " + robo.nome + " esta com o maior aproveitamento de " + (maiorAproveitamento * 100));
+                    }
                     break;
                 case 9:
                     Robo roboExcuir;
+                    if(robos.size() == 0) {System.out.print("\nAinda não existem robos."); break;}
                     do{
                         System.out.print("\nDigite o codigo do robo:");
                         roboExcuir = encontrarRobo(intInput(scanner));
                     }while(roboExcuir == null);
-                    excluirRobo(roboExcuir.codigo);
+                    robos.remove(roboExcuir);
+                    break;
+                case 10:
+                    sair = true;
                     break;
                 default:
                     break;
