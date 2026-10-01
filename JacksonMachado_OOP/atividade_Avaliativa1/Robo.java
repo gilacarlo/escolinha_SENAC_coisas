@@ -10,6 +10,7 @@ public class Robo {
     int derrotas = 0;
     int empates = 0;
     int folgas = 0;
+    int duelos = 0;
     float pontos = 0;
 
     Robo(int codigo, String nome, int ataque, int defesa){
@@ -41,7 +42,7 @@ public class Robo {
             System.out.print("\nNao pode ser maior que 100.");
             return;
         }
-        if(energia < 10){
+        if(energia <= 0){
             System.out.print("\nNao pode ser menor que 0.");
             return;
         }
@@ -53,6 +54,9 @@ public class Robo {
         }else{
             System.out.print("\nNao tem pontos suficientes.");
         }
+    }
+    void dueloComecou(){
+        this.duelos++;
     }
     void ganhouDuleo(){
         this.pontos += 3;

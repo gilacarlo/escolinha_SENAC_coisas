@@ -20,7 +20,7 @@ public class Main {
     }
 
     ArrayList<Robo> robos = new ArrayList<>();
-    int codigoMaximo = 0;
+    int codigoMaximo = 1;
     public void cadastrarRobo(String nome, int ataque, int defesa){
         if(ataque < 10 || ataque > 30){
             System.out.print("\nAtaque invalido!");
@@ -59,6 +59,9 @@ public class Main {
             if(mostrarPrint) System.out.print("\nSem energia no(s) robo(s)");
             return;
         }
+        robo1.dueloComecou();
+        robo2.dueloComecou();
+
         Robo primeiroRoboAtacar;
         if(robo1.pontos == robo2.pontos){
             if(robo1.codigo < robo2.codigo){
@@ -66,7 +69,7 @@ public class Main {
             }else{
                 primeiroRoboAtacar = robo2;
             }
-        }else if(robo1.pontos > robo2.pontos){
+        }else if(robo1.pontos < robo2.pontos){
             primeiroRoboAtacar = robo1;
         }else{
             primeiroRoboAtacar = robo2;
@@ -76,7 +79,7 @@ public class Main {
             // primeiro ataque
             int ataque1 = primeiroRoboAtacar.ataque;
             if(i % 2 == 0) ataque1 += 5;
-            segundoRoboAtacar.DefenderAtaque(ataque1, true);
+            segundoRoboAtacar.DefenderAtaque(ataque1, mostrarPrint);
             if(segundoRoboAtacar.energia == 0){
                 if(mostrarPrint) System.out.print("\nRobo " + segundoRoboAtacar.nome + " desmaiou!");
                 primeiroRoboAtacar.ganhouDuleo();
@@ -86,7 +89,7 @@ public class Main {
             // segundo ataque
             int ataque2 = segundoRoboAtacar.ataque;
             if(i % 2 == 0) ataque2 += 5;
-            primeiroRoboAtacar.DefenderAtaque(ataque2, true);
+            primeiroRoboAtacar.DefenderAtaque(ataque2, mostrarPrint);
             if(primeiroRoboAtacar.energia == 0){
                 if(mostrarPrint) System.out.print("\nRobo " + primeiroRoboAtacar.nome + " desmaiou!");
                 segundoRoboAtacar.ganhouDuleo();
@@ -152,8 +155,7 @@ public class Main {
         cadastrarRobo("Roberto", 20,15);
         cadastrarRobo("Maria", 20,15);
         cadastrarRobo("Deus", 30,20);
-
-
+        cadastrarRobo("Matheus", 15, 15);
         boolean sair = false;
         while(sair == false){
             System.out.print("\nEscolha uma das opcoes:");
@@ -172,7 +174,13 @@ public class Main {
             switch (numero) {
                 case 1:
                     System.out.print("\nDigite o nome do robo:");
-                    String nome = scanner.next();
+                    String nome;
+                    do{
+                        nome = scanner.nextLine();
+                        if(nome.trim().isEmpty()){
+                            System.out.println("\nO nome não pode estar vazio.");
+                        }
+                    }while(nome.trim().isEmpty());
                     System.out.print("\nDigite o ataque do robo:");
                     int ataque = intInput(scanner);
                     System.out.print("\nDigite a defesa do robo:");
@@ -218,10 +226,38 @@ public class Main {
                     roboE.recuperarEnergia(energiaRecuperar);
                     break;
                 case 6:
-                    Robo[] robosParaDuelar = listaDeRobosEmSuasColocacoes();
-                    if(){
-                        
+                    Robo[] todosRobos = listaDeRobosEmSuasColocacoes();
+                    ArrayList<Robo> robosDisponiveis = new ArrayList<>();
+                    for(int i = 0; i < todosRobos.length; i++){
+                        if(todosRobos[i].energia >= 30){
+                            robosDisponiveis.add(todosRobos[i]);
+                        }
                     }
+                    if(robosDisponiveis.size() < 2){
+                        System.out.print("\nNão existem robos disponíveis suficientes.");
+                        break;
+                    }
+                    Robo[] robosParaDuelar = new Robo[robosDisponiveis.size()];
+                    for(int i = 0; i < robosDisponiveis.size(); i++){
+                        robosParaDuelar[i] = robosDisponiveis.get(i);
+                    }
+                    if(robosParaDuelar.length % 2 != 0){
+                        Robo roboDaFolga = robosParaDuelar[robosParaDuelar.length - 1];
+                        roboDaFolga.folgas++;
+                        roboDaFolga.pontos++; // ponto de folga
+                        System.out.print("\n" + roboDaFolga.nome + " ficou de folga e ganhou 1 ponto.");
+                        Robo[] savedBruh = robosParaDuelar;
+                        robosParaDuelar = new Robo[robosParaDuelar.length - 1];
+                        for(int i = 0; i < robosParaDuelar.length; i++){
+                            robosParaDuelar[i] = savedBruh[i];
+                        }
+                    }
+                    for(int i = 0; i < robosParaDuelar.length; i += 2){
+                        Robo roboUM = robosParaDuelar[i];
+                        Robo roboDois = robosParaDuelar[i + 1];
+                        realizarCombate1v1(roboUM, roboDois, true);
+                    }
+
                     break;
                 case 7:
                     Robo[] robosColocacoes = listaDeRobosEmSuasColocacoes();
@@ -233,6 +269,10 @@ public class Main {
                     }
                     break;
                 case 8:
+                    if(robos.size() == 0){
+                        System.out.println("Ainda não existem robos.");
+                        break;
+                    }   
                     System.out.print("\nQuantidade de robos cadastrados: " + robos.size());
                     float mediaDeEnergiaDeTodos = 0;
                     for(Robo robo : robos){
@@ -243,14 +283,14 @@ public class Main {
                     float maiorAproveitamento = 0;
                     ArrayList<Robo> robosEmpatados = new ArrayList<>();
                     for(Robo robo : robos){
-                        int partidasTotaisRobo = robo.vitorias + robo.derrotas + robo.empates;
+                        int partidasTotaisRobo = robo.duelos;
                         if(partidasTotaisRobo == 0) continue;
-                        float proveitamentoRobo = robo.vitorias / partidasTotaisRobo;
-                        if(proveitamentoRobo > maiorAproveitamento){
-                            maiorAproveitamento = proveitamentoRobo; 
+                        float aproveitamentoRobo = (float) robo.vitorias / (float) partidasTotaisRobo;
+                        if(aproveitamentoRobo > maiorAproveitamento){
+                            maiorAproveitamento = aproveitamentoRobo; 
                             robosEmpatados.clear();
                             robosEmpatados.add(robo);
-                        }else if(proveitamentoRobo == maiorAproveitamento){
+                        }else if(aproveitamentoRobo == maiorAproveitamento){
                             robosEmpatados.add(robo);
                         }
                         if(robo.energia < 30){
@@ -268,7 +308,11 @@ public class Main {
                         System.out.print("\nDigite o codigo do robo:");
                         roboExcuir = encontrarRobo(intInput(scanner));
                     }while(roboExcuir == null);
-                    robos.remove(roboExcuir);
+                    if(roboExcuir.duelos == 0){
+                        robos.remove(roboExcuir);
+                    }else{
+                        System.out.print("\nEsse robo ja duelou entao nao pode deleta-lo!");
+                    }
                     break;
                 case 10:
                     sair = true;
