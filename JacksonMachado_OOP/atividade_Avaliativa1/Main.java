@@ -222,6 +222,7 @@ public class Main {
                         System.out.print("\nDigite o codigo do robo:");
                         roboE = encontrarRobo(intInput(scanner));
                     }while(roboE == null);
+                    System.out.print("\nQuantidade de energia para recuperar: ");
                     int energiaRecuperar = intInput(scanner);
                     roboE.recuperarEnergia(energiaRecuperar);
                     break;
