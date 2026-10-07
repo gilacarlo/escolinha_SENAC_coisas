@@ -4,10 +4,27 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 95vh;
     font-family: Arial, sans-serif;
+    background-color: #1f2937;
 }
 
+.ainda{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.esquec{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: row;
+}
 
 .container {
     border-width: 1px;
@@ -18,15 +35,12 @@ body{
     margin-bottom: 20px;
     font-size: 14px;
     font-weight: 600;
-    color: #374151;
-    cursor: pointer;
+    color: #687e9c;
     height: auto;
     
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: linear-gradient(#142038, #111827);
+    border: 2px solid transparent;
     border-radius: 12px;
-
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 
     width: 420px;
     margin: 40px auto;
@@ -40,10 +54,10 @@ input {
     padding: 11px 13px;
 
     font-size: 15px;
-    color: #111827;
-    background: #ffffff;
+    color: white;
+    background: #1b355c;
 
-    border: 1px solid #d1d5db;
+    border: 2px solid #1b345a;
     border-radius: 8px;
 
     outline: none;
@@ -52,6 +66,10 @@ input {
         border-color 0.2s ease,
         box-shadow 0.2s ease,
         background 0.2s ease;
+}
+
+input:focus {
+    border-color: rgb(109, 0, 143);
 }
 
 input:hover {
@@ -72,7 +90,7 @@ button {
     border: none;
     border-radius: 8px;
 
-    background: #111827;
+    background: linear-gradient(to right,#c404ff, #f802cf);
     color: white;
 
     font-size: 14px;
@@ -83,12 +101,27 @@ button {
     transition:
         background 0.2s ease,
         transform 0.1s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
-    background: #1f2937;
+    background: linear-gradient(to right,#4704ff, #026df8);
 }
 
 button:active {
     transform: scale(0.98);
+}
+
+button a{
+    color: inherit;
+    text-decoration:none;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
