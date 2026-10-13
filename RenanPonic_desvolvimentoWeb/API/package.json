@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "primeira api",
+  "license": "ISC",
+  "author": "Gian",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "node teste.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
